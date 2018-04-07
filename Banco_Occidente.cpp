@@ -14,7 +14,7 @@ string materia[7] = {"          Nombre:", "       Domicilio:", "Fecha Nacimiento
 
  main ()
 {
-
+system("color 3A");
 
 ventana1:
 system ("cls");
