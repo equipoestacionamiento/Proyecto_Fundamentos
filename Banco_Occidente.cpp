@@ -5,8 +5,20 @@
 
 #define ENTER 13
 #define ESC 27
+using namespace std;
 
+//declaracion de funciones
+	void interfaz();
+ 	void ingresar();
+ 	void men();
+ 	void ventana2();
+ 
+//variables
+ int menu,n,i,cont,tecla,tecla2;
+ 
+//estructura
 struct cliente{
+	int id;
 	char nombre[100];
 	char fechanacimiento[100];
 	int edad;
@@ -15,134 +27,163 @@ struct cliente{
 	double saldo;
 	char domicilio[100];
 	char ciudad[50];
-}clientes[5];
+}clientes[2];
 
-//string materia[7] = {"          Nombre:", "       Domicilio:", "Fecha Nacimiento:", "            Edad:","          Correo:", "  Tipo de cuenta:", "Saldo disponible:"};
-
-using namespace std;
-
+//funcion main
 int main(){
-
-	int tecla,tecla2;
-	int menu,n,i;
-ventana1:
-	system ("cls");
-	cout<<"\t\t _____________________________________________________________"<<endl;
-	cout<<"\t\t|                                                             |"<<endl;
-	cout<<"\t\t|                 RAMON IGNACIO ARIAS MORFIN                  |"<<endl;
-	cout<<"\t\t|                JOSE JAVIER VILLALVAZO PEREZ                 |"<<endl;
-	cout<<"\t\t|                 MARCO ANTONIO PINON SAUCEDO                 |"<<endl;
-	cout<<"\t\t|                                                             |"<<endl;
-	cout<<"\t\t|                                                             |"<<endl;
-	cout<<"\t\t|                   UNITEC CAMPUS GUADALAJARA                 |"<<endl;
-	cout<<"\t\t|                  FUNDAMENTOS DE PROGRAMACION                |"<<endl;
-	cout<<"\t\t|                     PROFESOR: CESAR PARRA                   |"<<endl;
-	cout<<"\t\t|                                                             |"<<endl;
-	cout<<"\t\t|                                                             |"<<endl;
-	cout<<"\t\t|       ____________________             _______              |"<<endl;
-	cout<<"\t\t|      | PRESIONE UNA TECLA |           |  ESC  |             |"<<endl;
-	cout<<"\t\t|      |   PARA CONTINUAR   |           |(SALIR)|             |"<<endl;
-	cout<<"\t\t|      |____________________|           |_______|             |"<<endl;
-	cout<<"\t\t|                                                             |"<<endl;
-	cout<<"\t\t|                                                             |"<<endl;
-	cout<<"\t\t|_____________________________________________________________|"<<endl;
-
-
-//ventana2
-tecla = getch();
-if(tecla==ENTER)
-{
-	goto ventana2;
-	
-	}	
-else if(tecla==ESC)
-{
+	interfaz();	
 	return 0;
-	}
-	
-	ventana2:
-system ("cls");
-cout<<"\t\t _____________________________________________________________"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                BANCO DE OCCIDENTE S.A DE C.V                |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                   DESEA INGRESAR AL SISTEMA                 |"<<endl;
-cout<<"\t\t|                   (PRESIONE CUALQUIER TECLA)                |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                          REGRESAR                           |"<<endl;
-cout<<"\t\t|                       (Presione ESC)                        |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|_____________________________________________________________|"<<endl;
+	}//main
 
-tecla = getch();
-if(tecla==ENTER)
-{
-	goto ventana3;
-	
-	}	
-else if(tecla==ESC)
-{
-	goto ventana1;
-	}
-	ventana3:
+//funcion interfaz
+void interfaz(){
 system ("cls");
-cout<<"\t\t _____________________________________________________________"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                             MENU                            |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                 1) INGRESAR NUEVO CLIENTE                   |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                 2) ELIMINAR REGISTRO DE CLIENTE             |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                 3) MODIFICAR REGISTRO DE CLIENTE            |"<<endl;
-cout<<"\t\t|                                                             |"<<endl;
-cout<<"\t\t|                 4) MOSTRAR REGISTRO  DE CLIENTE             |"<<endl;
-cout<<"\t\t|_____________________________________________________________|"<<endl;
-cin>>menu;
+	cout<<"\t\t ________________________________________________________"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|              RAMON IGNACIO ARIAS MORFIN                |"<<endl;
+	cout<<"\t\t|             JOSE JAVIER VILLALVAZO PEREZ               |"<<endl;
+	cout<<"\t\t|              MARCO ANTONIO PINON SAUCEDO               |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|                UNITEC CAMPUS GUADALAJARA               |"<<endl;
+	cout<<"\t\t|               FUNDAMENTOS DE PROGRAMACION              |"<<endl;
+	cout<<"\t\t|                  PROFESOR: CESAR PARRA                 |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|         _____________             _________            |"<<endl;
+	cout<<"\t\t|        |    ENTER    |           | ESPACIO |           |"<<endl;
+	cout<<"\t\t|        | (CONTINUAR) |           | (SALIR) |           |"<<endl;
+	cout<<"\t\t|        |_____________|           |_________|           |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|________________________________________________________|"<<endl;
+	
+	tecla = getch();
+		if(tecla==ENTER)
+	{
+		ventana2();
+	}
+		
+		 else if(tecla==27)
+		{
+			getch();
+			system("pause");
+		}
+	
+}//interfaz
 
-switch(menu)
+//funcion ventana2
+void ventana2(){
+	system ("cls");
+	cout<<"\t\t ________________________________________________________"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|             BANCO DE OCCIDENTE S.A DE C.V              |"<<endl;
+	cout<<"\t\t|                    SUCURSAL UNITEC                     |"<<endl;
+	cout<<"\t\t|              AV. LAZARO CARDENAS #405                  |"<<endl;
+	cout<<"\t\t|              COLONIA PRADOS TLAQUEPAQUE                |"<<endl;
+	cout<<"\t\t|                  TLAQUEPAQUE JALISCO                   |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|         _____________             _________            |"<<endl;
+	cout<<"\t\t|        |    ENTER    |           | ESPACIO |           |"<<endl;
+	cout<<"\t\t|        | (CONTINUAR) |           | (SALIR) |           |"<<endl;
+	cout<<"\t\t|        |_____________|           |_________|           |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|________________________________________________________|"<<endl;
+
+	tecla = getch();
+		if(tecla==ENTER)
+	{
+		men();
+	}
+		
+		 else if(tecla==ESC)
+		{
+			interfaz();
+		}	
+}//ventana2	
+	
+//funcion men	
+void men(){
+	system ("cls");
+	cout<<"\t\t ________________________________________________________"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|                         MENU                           |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|            1) AGREGAR   REGISTRO DE CLIENTE            |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|            2) ELIMINAR  REGISTRO DE CLIENTE            |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|            3) MODIFICAR REGISTRO DE CLIENTE            |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|            4) MOSTRAR  REGISTRO  DE CLIENTE            |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|                                                        |"<<endl;
+	cout<<"\t\t|            5)  SALIR DEL PROGRAMA                      |"<<endl;
+	cout<<"\t\t|________________________________________________________|"<<endl;
+	cin>>menu;
+	
+		switch(menu)
 	{
 	 case 1:
-	 	system("cls");
-	  
-	  for( i=0; i<2; i++){
-	  	fflush(stdin);
-	cout<<"cliente # "<<i+1<<endl;
-	cout<<"\n           Nombre: \t"; 
-	cin.getline(clientes[i].nombre , 100, '\n');
-	cout<<"\n        Domicilio: \t ";
-	cin.getline(clientes[i].domicilio, 100, '\n');
-	cout<<"\n	Fecha Nacimiento:(DD/MM/AAAA) \t ";
-	cin.getline(clientes[i].fechanacimiento, 100, '\n');
-	    
-					}
-					
-	
+	 	ingresar();
 	break;
 	 
 	 case 2:
+	 	//eliminar();
 	break;
 	
 	 case 3:
+	 	//modificar();
 	break;
 	
 	 case 4:
+	 	//mostrar();
+	break;
+		 case 5:
+		system ("cls");
+		cout<<"\n\n\t\tGRACIAS POR UTILIZAR EL PROGRAMA"<<
+		"\n\t\t\t\tADIOS"<<endl;
+		//modificar();
 	break;
 	}	
-
-
-	
-
 		
-	return 0;
+}//men	
 	
-	}
-	
+void ingresar(){//ingresar
+	system("cls");
+	  
+	  if( i<2){
+	fflush(stdin);
+	cout<<"Agregar Cliente:"<<endl;
+	clientes[i].id = i + 1;
+	cout<<"\n          Nombre: \t"; 
+	cin.getline(clientes[i].nombre , 100, '\n');
+	cout<<"\n       Domicilio: \t ";
+	cin.getline(clientes[i].domicilio, 100, '\n');
+	cout<<"\nFecha Nacimiento \t ";
+	cout<<"\n    (DD/MM/AAAA): \t ";
+	cin.getline(clientes[i].fechanacimiento, 100, '\n');
+		i++;
+	cout<<"\nCliente registrado correctamente\n"<<endl;
+     system("pause");
+     system("cls");
+    		men();
+}
+else {
+    cout<<"\nNo hay espacio disponible\n"<<endl;
+    system ("pause");
+  }
+}//ingresar
+
+
+
+
+
+
+
+
+
