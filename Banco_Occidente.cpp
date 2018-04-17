@@ -1,3 +1,4 @@
+//LIBRERIAS
 #include<iostream>
 #include<string.h>
 #include<conio.h>
@@ -12,12 +13,16 @@ using namespace std;
  	void ingresar();
  	void men();
  	void ventana2();
- 
+    void mostrar();
+    void modificar();
+    void eliminar();
+    
 //variables
- int menu,n,i,cont,tecla,tecla2;
+ int menu,n,i,j,cont,tecla,tecla2,dato,opc,eliminado,dato1,dato2;
  
 //estructura
-struct cliente{
+struct cliente
+{
 	int id;
 	char nombre[100];
 	char fechanacimiento[100];
@@ -27,7 +32,7 @@ struct cliente{
 	double saldo;
 	char domicilio[100];
 	char ciudad[50];
-}clientes[2];
+}clientes[30];
 
 //funcion main
 int main(){
@@ -50,7 +55,7 @@ system ("cls");
 	cout<<"\t\t|                  PROFESOR: CESAR PARRA                 |"<<endl;
 	cout<<"\t\t|                                                        |"<<endl;
 	cout<<"\t\t|         _____________             _________            |"<<endl;
-	cout<<"\t\t|        |    ENTER    |           | ESPACIO |           |"<<endl;
+	cout<<"\t\t|        |    ENTER    |           |   ESC   |           |"<<endl;
 	cout<<"\t\t|        | (CONTINUAR) |           | (SALIR) |           |"<<endl;
 	cout<<"\t\t|        |_____________|           |_________|           |"<<endl;
 	cout<<"\t\t|                                                        |"<<endl;
@@ -62,10 +67,9 @@ system ("cls");
 		ventana2();
 	}
 		
-		 else if(tecla==27)
+		  if(tecla==ESC)
 		{
-			getch();
-			system("pause");
+			
 		}
 	
 }//interfaz
@@ -83,10 +87,10 @@ void ventana2(){
 	cout<<"\t\t|                  TLAQUEPAQUE JALISCO                   |"<<endl;
 	cout<<"\t\t|                                                        |"<<endl;
 	cout<<"\t\t|                                                        |"<<endl;
-	cout<<"\t\t|         _____________             _________            |"<<endl;
-	cout<<"\t\t|        |    ENTER    |           | ESPACIO |           |"<<endl;
-	cout<<"\t\t|        | (CONTINUAR) |           | (SALIR) |           |"<<endl;
-	cout<<"\t\t|        |_____________|           |_________|           |"<<endl;
+	cout<<"\t\t|      _____________      _________      __________      |"<<endl;
+	cout<<"\t\t|     |    ENTER    |    | ESPACIO |    |    ESC   |     |"<<endl;
+	cout<<"\t\t|     | (CONTINUAR) |    | (SALIR) |    |(REGRESAR)|     |"<<endl;
+	cout<<"\t\t|     |_____________|    |_________|    |__________|     |"<<endl;
 	cout<<"\t\t|                                                        |"<<endl;
 	cout<<"\t\t|                                                        |"<<endl;
 	cout<<"\t\t|________________________________________________________|"<<endl;
@@ -122,9 +126,11 @@ void men(){
 	cout<<"\t\t|            4) MOSTRAR  REGISTRO  DE CLIENTE            |"<<endl;
 	cout<<"\t\t|                                                        |"<<endl;
 	cout<<"\t\t|                                                        |"<<endl;
-	cout<<"\t\t|            5)  SALIR DEL PROGRAMA                      |"<<endl;
+	cout<<"\t\t|            5) SALIR DEL PROGRAMA                       |"<<endl;
 	cout<<"\t\t|________________________________________________________|"<<endl;
-	cin>>menu;
+	
+	
+	cout<<"\n\n\t\tIngresa una opcion: \t"; cin>>menu;
 	
 		switch(menu)
 	{
@@ -133,57 +139,191 @@ void men(){
 	break;
 	 
 	 case 2:
-	 	//eliminar();
+	 	eliminar();
 	break;
 	
 	 case 3:
-	 	//modificar();
+	 	modificar();
 	break;
 	
 	 case 4:
-	 	//mostrar();
+	 	mostrar();
 	break;
-		 case 5:
+	 case 5:
 		system ("cls");
 		cout<<"\n\n\t\tGRACIAS POR UTILIZAR EL PROGRAMA"<<
-		"\n\t\t\t\tADIOS"<<endl;
-		//modificar();
+		"\n\t\t\t\tADIOS"<<endl;	
 	break;
-	}	
-		
+	}		
 }//men	
 	
-void ingresar(){//ingresar
+void ingresar()
+{//ingresar
 	system("cls");
-	  
-	  if( i<2){
+	fflush(stdin); 
+	
+	if( i<30)
+	{
 	fflush(stdin);
 	cout<<"Agregar Cliente:"<<endl;
 	clientes[i].id = i + 1;
-	cout<<"\n          Nombre: \t"; 
+	cout<<"\n          Nombre:  "; 
 	cin.getline(clientes[i].nombre , 100, '\n');
-	cout<<"\n       Domicilio: \t ";
-	cin.getline(clientes[i].domicilio, 100, '\n');
-	cout<<"\nFecha Nacimiento \t ";
-	cout<<"\n    (DD/MM/AAAA): \t ";
+	cout<<"\n            Edad:  ";
+	cin>>clientes[i].edad;
+	fflush(stdin);
+	cout<<"\nFecha Nacimiento ";
+	cout<<"\n    (DD/MM/AAAA):  ";
 	cin.getline(clientes[i].fechanacimiento, 100, '\n');
-		i++;
-	cout<<"\nCliente registrado correctamente\n"<<endl;
-     system("pause");
-     system("cls");
-    		men();
-}
-else {
-    cout<<"\nNo hay espacio disponible\n"<<endl;
+	fflush(stdin);
+	cout<<"\n       Domicilio:  ";
+	cin.getline(clientes[i].domicilio, 100, '\n');
+	cout<<"\n          Ciudad:  ";
+	cin.getline(clientes[i].ciudad, 50, '\n');
+	cout<<"\n          Correo:  ";
+	cin.getline(clientes[i].correo, 100, '\n');
+	fflush(stdin);
+	cout<<"\n  Tipo de cuenta:  ";
+	cin.getline(clientes[i].tipocuenta, 100, '\n');
+	fflush(stdin);
+	cout<<"\nSaldo disponible:  ";
+	cin>>clientes[i].saldo;
+	i++;
+	
+	cout<<"\n Cliente registrado correctamente \n"<<endl;
+    system("pause");
+    men();
+    } 
+	 
+else{
+    cout<<"\n\n\n\t\tNo hay espacio disponible\n"<<endl;
     system ("pause");
-  }
+    }
 }//ingresar
 
+void mostrar()//mostrar
+{
+   fflush(stdin);
+   system("cls");
+   cout<<"Que registro desea ver: "<<endl;
+   cin>>dato2;
+   dato2=dato2-1;
+   
+   
+   
+   if (dato2<30)
+   			{
+   cout<<"              Id:   "<<clientes[dato2].id				<<endl;
+   cout<<"          Nombre:   "<<clientes[dato2].nombre			<<endl;
+   cout<<"            Edad:   "<<clientes[dato2].edad			<<endl;
+   cout<<"Fecha nacimiento:   "<<clientes[dato2].fechanacimiento<<endl;
+   cout<<"       Domicilio:   "<<clientes[dato2].domicilio		<<endl;
+   cout<<"          Ciudad:   "<<clientes[dato2].ciudad			<<endl;
+   cout<<"          Correo:   "<<clientes[dato2].correo			<<endl;
+   cout<<"  Tipo de cuenta:   "<<clientes[dato2].tipocuenta		<<endl;
+   cout<<"Saldo Disponible:   "<<clientes[dato2].saldo			<<endl<<endl;
+   
+   	system("pause");
+   	men();	
+  			}
+  			
+  else
+  {
+  	system("cls");
+    cout<<"\n Registro Inexistente \n"<<endl<<endl;
+    
+    system ("pause");
+    men();
+  } 
+}//mostrar
 
+void modificar()//modificar
+{
+  system("cls");
+  cout<<"Ingresar ID del cliente que desea modificar : "<<endl;	
+  cin>>dato;
+  dato=dato-1;
+  system("cls");
+ 
+  if (dato<30)
+  {
+   cout<<"              Id:   "<<clientes[dato2].id				<<endl;
+   cout<<"          Nombre:   "<<clientes[dato2].nombre			<<endl;
+   cout<<"            Edad:   "<<clientes[dato2].edad			<<endl;
+   cout<<"Fecha nacimiento:   "<<clientes[dato2].fechanacimiento<<endl;
+   cout<<"       Domicilio:   "<<clientes[dato2].domicilio		<<endl;
+   cout<<"          Ciudad:   "<<clientes[dato2].ciudad			<<endl;
+   cout<<"          Correo:   "<<clientes[dato2].correo			<<endl;
+   cout<<"  Tipo de cuenta:   "<<clientes[dato2].tipocuenta		<<endl;
+   cout<<"Saldo Disponible:   "<<clientes[dato2].saldo			<<endl<<endl;
+   
+   fflush(stdin);
+    cout<<"\n          Nombre:  "; 
+	cin.getline(clientes[i].nombre , 100, '\n');
+	cout<<"\n            Edad:  ";
+	cin>>clientes[i].edad;
+	fflush(stdin);
+	cout<<"\n  Fecha Nacimiento ";
+	cout<<"\n    (DD/MM/AAAA):  ";
+	cin.getline(clientes[i].fechanacimiento, 100, '\n');
+	fflush(stdin);
+	cout<<"\n       Domicilio:  ";
+	cin.getline(clientes[i].domicilio, 100, '\n');
+	cout<<"\n          Ciudad:  ";
+	cin.getline(clientes[i].ciudad, 50, '\n');
+	cout<<"\n          Correo:  ";
+	cin.getline(clientes[i].correo, 100, '\n');
+	fflush(stdin);
+	cout<<"\n  Tipo de cuenta:  ";
+	cin.getline(clientes[i].tipocuenta, 100, '\n');
+	fflush(stdin);
+	cout<<"\nSaldo disponible:  ";
+	cin>>clientes[i].saldo;
+	cout<<"\n\n\n\t\t Cliente modificado correctamente\n"<<endl<<endl;
+	system("pause");
+	system("cls");
+	men();
+	  }	
+  else
+  {
+  	system("cls");
+    cout<<"\n Registro Inexistente \n"<<endl;
+    
+    system ("pause");
+    men();
+  } 	  
+}//modificar
 
-
-
-
-
-
+void eliminar()
+{//eliminar
+    system("cls");
+	cout<<"Cual registro desea eliminar : "<<endl;
+    cin>>dato1;
+    dato1=dato1-1;
+        
+    if(dato1<30)
+    {
+    	fflush(stdin);
+		clientes[dato1].nombre[0]=0;
+    	clientes[dato1].domicilio[0]=0;
+    	clientes[dato1].edad=0;
+    	clientes[dato1].fechanacimiento[0]=0;
+    	clientes[dato1].ciudad[0]=0;
+    	clientes[dato1].correo[0]=0;
+    	clientes[dato1].saldo=0;
+    	clientes[dato1].tipocuenta[0]=0;
+    	cout<<"\n\n\n\t\t Cliente eliminado correctamente\n"<<endl<<endl;
+    	system("pause");
+    	system ("cls");
+        men();	
+	} 
+  else
+  {
+  	system("cls");
+    cout<<"\n Registro Inexistente \n"<<endl;
+    
+    system ("pause");
+    men();
+  } 
+}//eliminar
 
